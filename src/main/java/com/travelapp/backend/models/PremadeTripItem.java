@@ -5,6 +5,7 @@ import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "PremadeTripItem")
@@ -27,9 +28,25 @@ public class PremadeTripItem {
     private Time time;
 
     @Column( 
-        name = "description",
-        nullable = false
+        name = "description"
     )
     private String description;
+
+    // Relations
+
+    @OneToOne
+    private PremadeTrip premadeTrip;
+
+    public PremadeTripItem() {
+    }
+
+    public PremadeTripItem(Integer tripId, Integer day, Time time, String description) {
+        this.tripId = tripId;
+        this.day = day;
+        this.time = time;
+        this.description = description;
+    }
     
+    
+
 }

@@ -4,6 +4,7 @@ import java.sql.Time;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "CustomTripItem")
@@ -12,9 +13,14 @@ public class CustomTripItem {
 
     @Id
     private Integer tripId;
+    private String description;
     private Integer day;
     private Time time;
-    private String description;
+    
+    // Relations
+    @OneToOne
+    private CustomTrip customTrip;
+
 
     public CustomTripItem() {
       

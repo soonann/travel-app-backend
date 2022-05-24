@@ -16,9 +16,6 @@ import javax.persistence.Table;
 public class TUser {
     
     @Id
-    @Column(
-        name = "email"
-    )
     private String email;
     
     @Column(
@@ -45,8 +42,10 @@ public class TUser {
     )
     private String mobile;
 
-    // @OneToMany
-    // private List<Map<Integer, List<CustomTripItem>>> userCustomTripList;
+    // Relations
+    
+    @OneToMany(mappedBy = "tuser")
+    private List<CustomTrip> customTripList;
 
     public TUser() {
     }

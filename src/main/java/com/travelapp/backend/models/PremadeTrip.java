@@ -1,8 +1,11 @@
 package com.travelapp.backend.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "PremadeTrip")
@@ -30,6 +33,13 @@ public class PremadeTrip {
         name = "duration"
     )
     private Integer duration;
+
+
+    // Relations
+    @OneToMany(mappedBy = "premadeTrip")
+    private List<PremadeTripItem> premadeTripItems;
+
+    
 
     public PremadeTrip() {
     }
