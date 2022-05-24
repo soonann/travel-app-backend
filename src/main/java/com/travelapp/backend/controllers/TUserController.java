@@ -29,6 +29,8 @@ public class TUserController {
         return this.tUserService.getAllUsers();
     }
 
+
+    // TODO: Figure out how to map this properly
     @PostMapping
 	public void registerNewUser(@RequestBody TUser tuser){
 		this.tUserService.addNewUser(tuser);
