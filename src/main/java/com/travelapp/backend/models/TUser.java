@@ -28,10 +28,7 @@ public class TUser {
     )
     private String lastName;
 
-    @Column(
-        nullable = false,
-        name = "dob"
-    )
+ 
     private LocalDate DoB;
 
     @Column(
