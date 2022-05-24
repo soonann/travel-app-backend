@@ -1,9 +1,13 @@
-package com.travelapp.api.models;
+package com.travelapp.backend.models;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -41,7 +45,8 @@ public class TUser {
     )
     private String mobile;
 
-
+    // @OneToMany
+    // private List<Map<Integer, List<CustomTripItem>>> userCustomTripList;
 
     public TUser() {
     }

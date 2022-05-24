@@ -1,4 +1,4 @@
-package com.travelapp.api.models;
+package com.travelapp.backend.models;
 
 import java.sql.Time;
 

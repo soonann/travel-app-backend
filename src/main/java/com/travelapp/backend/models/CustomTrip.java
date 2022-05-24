@@ -1,4 +1,4 @@
-package com.travelapp.api.models;
+package com.travelapp.backend.models;
 
 import java.util.List;
 import java.util.Map;
@@ -58,6 +58,7 @@ public class CustomTrip {
         name = "tripCode"
     )
     private String tripCode;
+
 
 
     // private Map<Integer, List<CustomTripItem>> CustomTripItemsMap;

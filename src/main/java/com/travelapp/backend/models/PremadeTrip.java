@@ -1,4 +1,4 @@
-package com.travelapp.api.models;
+package com.travelapp.backend.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
