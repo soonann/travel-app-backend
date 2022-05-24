@@ -67,7 +67,15 @@ public class CustomTripItem {
         this.description = description;
     }
 
-    
+    public CustomTrip getCustomTrip() {
+        return customTrip;
+    }
 
+    public void setCustomTrip(CustomTrip customTrip) {
+        this.customTrip = customTrip;
+    }
+
+    
+    
     
 }

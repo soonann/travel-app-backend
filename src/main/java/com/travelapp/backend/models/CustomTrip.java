@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -130,6 +129,22 @@ public class CustomTrip {
 
     public void setTripCode(String tripCode) {
         this.tripCode = tripCode;
+    }
+
+    public TUser getTuser() {
+        return tuser;
+    }
+
+    public void setTuser(TUser tuser) {
+        this.tuser = tuser;
+    }
+
+    public List<CustomTripItem> getCustomTripItems() {
+        return customTripItems;
+    }
+
+    public void setCustomTripItems(List<CustomTripItem> customTripItems) {
+        this.customTripItems = customTripItems;
     }
 
     

@@ -2,8 +2,6 @@ package com.travelapp.backend.models;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -97,6 +95,16 @@ public class TUser {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+
+    public List<CustomTrip> getCustomTripList() {
+        return customTripList;
+    }
+
+
+    public void setCustomTripList(List<CustomTrip> customTripList) {
+        this.customTripList = customTripList;
     }
 
     

@@ -82,6 +82,14 @@ public class PremadeTrip {
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
+
+    public List<PremadeTripItem> getPremadeTripItems() {
+        return premadeTripItems;
+    }
+
+    public void setPremadeTripItems(List<PremadeTripItem> premadeTripItems) {
+        this.premadeTripItems = premadeTripItems;
+    }
     
     
     
