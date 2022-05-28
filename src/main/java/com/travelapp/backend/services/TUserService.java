@@ -1,10 +1,11 @@
 package com.travelapp.backend.services;
 
-import java.security.InvalidParameterException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import com.travelapp.backend.models.API_TUser;
 import com.travelapp.backend.models.TUser;
 import com.travelapp.backend.repositories.TUserRepository;
 
@@ -25,6 +26,15 @@ public class TUserService {
         return this.tUserRepository.findAll();
     }
 
+    public TUser getUserById(Integer id){
+        Optional<TUser> tUser = this.tUserRepository.findById(id);
+        if (tUser.isEmpty()){
+            throw new RuntimeException("Unable to find user with ID " + id);
+        }
+        
+        return tUser.get();
+    }
+
     public void addNewUser(TUser tuser){
 
         // check user validity 
@@ -41,16 +51,30 @@ public class TUserService {
         this.tUserRepository.save(tuser);
     }
 
-    public void updateUser(String email, String firstName, String lastName, String mobile){
+    
+    public void updateUser(API_TUser params){
+        TUser tUser = this.tUserRepository.findById(params.getId()).orElseThrow(() -> new RuntimeException("User with id does not exist"));
+        params.convertToEntity(tUser);
+
+        this.tUserRepository.save(tUser);
+
+    }
+
+
+    public void updateUserById(Integer id, String email, String firstName, String lastName, String mobile){
         //TODO: add more validations
         //TODO: test
-        Optional<TUser> optionalUser = this.tUserRepository.findById(email);
-
-        if (optionalUser.isEmpty()){
-            throw new RuntimeException("User with email does not exist");
-        }
+        TUser tuser = this.tUserRepository.findById(id).orElseThrow(() -> new RuntimeException("User with id does not exist"));
         
-        TUser tuser = optionalUser.get();
+        // email checks
+        if(email != null && this.tUserRepository.findTUserByEmail(email).isPresent()){
+            throw new RuntimeException("The email address is already used");
+        }
+        else if (email != null){
+            tuser.setEmail(email);
+        }
+
+
         if (firstName != null){
             tuser.setFirstName(firstName);
         }
@@ -68,16 +92,15 @@ public class TUserService {
     }
 
     
-    public void deleteUser(String email){
+    public void deleteUserById(Integer id){
 
         // TODO: add more validations
-        if (this.tUserRepository.findById(email).isEmpty()){
+        if (this.tUserRepository.findById(id).isEmpty()){
             
-            System.out.println(email+ " is the email");
-            throw new RuntimeException("User does not exist");
+            throw new RuntimeException("User with id of " + id + " does not exist");
         }
 
-        this.tUserRepository.deleteById(email);
+        this.tUserRepository.deleteById(id);
     }
 
 }

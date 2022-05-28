@@ -4,16 +4,34 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @Entity(name = "TUser")
 @Table(name = "TUser")
 public class TUser {
-    
+
     @Id
+    @SequenceGenerator(
+        allocationSize = 1,
+        sequenceName = "tuser_sequence",
+        name = "tuser_sequence"
+    )
+    @GeneratedValue(
+        generator = "tuser_sequence",
+        strategy = GenerationType.SEQUENCE    
+    )
+    private Integer id;
+    
+    @Column(
+        nullable = false,
+        unique = true
+    )
     private String email;
     
     @Column(
@@ -28,8 +46,8 @@ public class TUser {
     )
     private String lastName;
 
- 
-    private LocalDate DoB;
+    
+    private LocalDate dob;
 
     @Column(
         nullable = false,
@@ -46,13 +64,17 @@ public class TUser {
     }
 
 
-    public TUser(String email, String firstName, String lastName, LocalDate DoB, String mobile) {
+    
+
+    public TUser(Integer id, String email, String firstName, String lastName, LocalDate dob, String mobile) {
+        this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.DoB = DoB;
+        this.dob = dob;
         this.mobile = mobile;
     }
+
 
     public String getEmail() {
         return email;
@@ -78,13 +100,35 @@ public class TUser {
         this.lastName = lastName;
     }
 
-    public LocalDate getDoB() {
-        return DoB;
+    
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setDoB(LocalDate doB) {
-        DoB = doB;
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
     }
+
+
+
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+
+
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+
+
 
     public String getMobile() {
         return mobile;
