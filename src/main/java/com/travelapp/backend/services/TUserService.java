@@ -3,7 +3,6 @@ package com.travelapp.backend.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import com.travelapp.backend.models.API_TUser;
 import com.travelapp.backend.models.TUser;

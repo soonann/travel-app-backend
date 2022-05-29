@@ -2,45 +2,14 @@ package com.travelapp.backend.models;
 
 import java.time.LocalTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-@Entity(name = "premade_trip_item")
-@Table(name = "premade_trip_item")
-public class PremadeTripItem {
-    
-    @Id
+public class API_PremadeTripItem {
+ 
     private Integer tripId;
-
-    @Column( 
-        name = "day",
-        nullable = false
-    )
     private Integer day;
-
-    @Column( 
-        name = "time",
-        nullable = false
-    )
     private LocalTime time;
-
-    @Column( 
-        name = "description"
-    )
     private String description;
 
-    // Relations
-
-    @OneToOne
-    private PremadeTrip premadeTrip;
-
-    public PremadeTripItem() {
-    }
-
-    public PremadeTripItem(Integer tripId, Integer day, LocalTime time, String description) {
+    public API_PremadeTripItem(Integer tripId, Integer day, LocalTime time, String description) {
         this.tripId = tripId;
         this.day = day;
         this.time = time;
@@ -50,43 +19,39 @@ public class PremadeTripItem {
     public Integer getTripId() {
         return tripId;
     }
-
     public void setTripId(Integer tripId) {
         this.tripId = tripId;
     }
-
     public Integer getDay() {
         return day;
     }
-
     public void setDay(Integer day) {
         this.day = day;
     }
-
     public LocalTime getTime() {
         return time;
     }
-
     public void setTime(LocalTime time) {
         this.time = time;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public PremadeTripItem convertToEntity(PremadeTripItem premadeTrip){
+        
+        premadeTrip.setDay(this.day);
+        premadeTrip.setDescription(this.description);
+        premadeTrip.setTime(this.time);
+        premadeTrip.setTripId(this.tripId);
 
-    public PremadeTrip getPremadeTrip() {
+        if (this.day == null || this.description == null || this.time == null || this.tripId == null ){
+            throw new RuntimeException("All items need Day, Description, Time and TripID");
+        }
+        
         return premadeTrip;
     }
-
-    public void setPremadeTrip(PremadeTrip premadeTrip) {
-        this.premadeTrip = premadeTrip;
-    }
-    
-    
-
 }

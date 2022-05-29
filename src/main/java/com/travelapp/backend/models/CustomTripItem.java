@@ -1,6 +1,6 @@
 package com.travelapp.backend.models;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,7 +15,7 @@ public class CustomTripItem {
     private Integer tripId;
     private String description;
     private Integer day;
-    private Time time;
+    private LocalTime time;
     
     // Relations
     @OneToOne
@@ -26,7 +26,7 @@ public class CustomTripItem {
       
     }
 
-    public CustomTripItem(Integer tripId, Integer day, Time time, String description) {
+    public CustomTripItem(Integer tripId, Integer day, LocalTime time, String description) {
         this.tripId = tripId;
         this.day = day;
         this.time = time;
@@ -51,11 +51,11 @@ public class CustomTripItem {
         this.tripId = tripId;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
