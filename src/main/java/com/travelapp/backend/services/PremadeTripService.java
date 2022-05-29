@@ -2,7 +2,6 @@ package com.travelapp.backend.services;
 
 import java.util.List;
 
-import com.travelapp.backend.models.API_PremadeTrip;
 import com.travelapp.backend.models.PremadeTrip;
 import com.travelapp.backend.repositories.PremadeTripRepository;
 

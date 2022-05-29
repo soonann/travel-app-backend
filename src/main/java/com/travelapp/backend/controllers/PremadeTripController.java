@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
-import com.travelapp.backend.models.API_PremadeTrip;
 import com.travelapp.backend.models.PremadeTrip;
 import com.travelapp.backend.services.PremadeTripService;
 
