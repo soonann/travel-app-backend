@@ -32,8 +32,9 @@ public class PremadeTripService {
         this.premadeTripRepository.save(premadeTrip);
     }
 
-    public void updatePremadeTripByCode(API_PremadeTrip premadeTrip){
-        
+    public void updatePremadeTripByCode(PremadeTrip premadeTrip){
+        System.out.println("Service Layer");
+        this.premadeTripRepository.save(premadeTrip);
     }
     
     public void deletePremadeTripByCode(String code){

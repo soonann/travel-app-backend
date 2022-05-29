@@ -29,11 +29,9 @@ public class PremadeTripController {
         this.premadeTripService = premadeTripService;
     }
 
-    @PostMapping(path = "{code}")
+    @PostMapping
     public void createNewPremadeTrip(
-        @PathParam("code") String code ,
         @RequestBody PremadeTrip premadeTrip){
-        premadeTrip.setTripCode(code);
         this.premadeTripService.createNewPremadeTrip(premadeTrip);
     }
 
@@ -47,6 +45,7 @@ public class PremadeTripController {
     public PremadeTrip getPremadeTripByCode(
         @PathParam("code") String code
     ){
+        
         return this.premadeTripService.getPremadeTripByCode(code);
     }
 
@@ -55,8 +54,9 @@ public class PremadeTripController {
     @PutMapping(path = "{code}")
     public void updatePremadeTripByCode(
         @PathParam("code") String code,
-        @RequestBody API_PremadeTrip premadeTrip
+        @RequestBody PremadeTrip premadeTrip
     ){
+        System.out.println("Controller Layer");
         premadeTrip.setTripCode(code);
         this.premadeTripService.updatePremadeTripByCode(premadeTrip);
         
