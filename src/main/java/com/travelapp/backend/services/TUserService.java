@@ -3,8 +3,7 @@ package com.travelapp.backend.services;
 import java.util.List;
 import java.util.Optional;
 
-
-import com.travelapp.backend.models.API_TUser;
+import javax.transaction.Transactional;
 import com.travelapp.backend.models.TUser;
 import com.travelapp.backend.repositories.TUserRepository;
 
@@ -50,12 +49,16 @@ public class TUserService {
         this.tUserRepository.save(tuser);
     }
 
-    
-    public void updateUser(API_TUser params){
+    @Transactional
+    public void updateUser(TUser params){
         TUser tUser = this.tUserRepository.findById(params.getId()).orElseThrow(() -> new RuntimeException("User with id does not exist"));
-        params.convertToEntity(tUser);
+        
 
-        this.tUserRepository.save(tUser);
+        if (params.getFirstName() != null){
+            tUser.setFirstName(params.getFirstName());
+        }
+        
+        
 
     }
 

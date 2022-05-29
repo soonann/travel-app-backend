@@ -2,7 +2,6 @@ package com.travelapp.backend.controllers;
 
 import java.util.List;
 
-import com.travelapp.backend.models.API_TUser;
 import com.travelapp.backend.models.TUser;
 import com.travelapp.backend.services.TUserService;
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
@@ -47,7 +45,7 @@ public class TUserController {
     @PutMapping(path = "{id}")
 	public void updateUserById(
         @PathVariable("id") Integer id,
-        @RequestBody API_TUser user
+        @RequestBody TUser user
     ){
         user.setId(id);
         System.out.println("received id: " + id + "," + user.getEmail() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getMobile());
