@@ -1,7 +1,6 @@
 package com.travelapp.backend.models;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,44 +26,38 @@ public class CustomTrip {
         strategy = GenerationType.SEQUENCE
     )
     @Column( 
-        name = "id",
+        name = "trip_id",
         nullable = false
     )
-    private Integer id;
+    private Integer tripId;
 
     @Column( 
-        name = "name",
+        name = "trip_name",
         nullable = false
     )
-    private String name;
+    private String tripName;
 
     @Column( 
-        name = "country",
+        name = "trip_country",
         nullable = false
     )
-    private String country;
+    private String tripCountry;
 
     @Column( 
-        name = "duration",
+        name = "trip_duration",
         nullable = false
     )
-    private Integer duration;
+    private Integer tripDuration;
 
     @Column( 
-        name = "isCustom",
-        nullable = false
-    )
-    private Boolean isCustom;
-
-    @Column( 
-        name = "tripCode"
+        name = "trip_code"
     )
     private String tripCode;
 
     // Relations
 
     @OneToOne
-    private TUser tuser;
+    private User user;
     
     @OneToMany(mappedBy = "customTrip")
     private List<CustomTripItem> customTripItems;
@@ -74,78 +67,103 @@ public class CustomTrip {
     public CustomTrip() {
     }
 
-    public CustomTrip(Integer id, String name, String country, Integer duration, Boolean isCustom, String tripCode) {
-        this.id = id;
-        this.name = name;
-        this.country = country;
-        this.duration = duration;
-        this.isCustom = isCustom;
+
+
+    public CustomTrip(Integer tripId, String tripName, String tripCountry, Integer tripDuration, String tripCode) {
+        this.tripId = tripId;
+        this.tripName = tripName;
+        this.tripCountry = tripCountry;
+        this.tripDuration = tripDuration;
         this.tripCode = tripCode;
     }
 
-    public Integer getId() {
-        return id;
+
+
+    public Integer getTripId() {
+        return tripId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+
+
+    public void setTripId(Integer tripId) {
+        this.tripId = tripId;
     }
 
-    public String getName() {
-        return name;
+
+
+    public String getTripName() {
+        return tripName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
     }
 
-    public String getCountry() {
-        return country;
+
+
+    public String getTripCountry() {
+        return tripCountry;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+
+
+    public void setTripCountry(String tripCountry) {
+        this.tripCountry = tripCountry;
     }
 
-    public Integer getDuration() {
-        return duration;
+
+
+    public Integer getTripDuration() {
+        return tripDuration;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+
+
+    public void setTripDuration(Integer tripDuration) {
+        this.tripDuration = tripDuration;
     }
 
-    public Boolean getIsCustom() {
-        return isCustom;
-    }
 
-    public void setIsCustom(Boolean isCustom) {
-        this.isCustom = isCustom;
-    }
 
     public String getTripCode() {
         return tripCode;
     }
 
+
+
     public void setTripCode(String tripCode) {
         this.tripCode = tripCode;
     }
 
-    public TUser getTuser() {
-        return tuser;
+
+
+    public User getTuser() {
+        return user;
     }
 
-    public void setTuser(TUser tuser) {
-        this.tuser = tuser;
+
+
+    public void setTuser(User user) {
+        this.user = user;
     }
+
+
 
     public List<CustomTripItem> getCustomTripItems() {
         return customTripItems;
     }
 
+
+
     public void setCustomTripItems(List<CustomTripItem> customTripItems) {
         this.customTripItems = customTripItems;
     }
+
+
+    
+    
 
     
     
