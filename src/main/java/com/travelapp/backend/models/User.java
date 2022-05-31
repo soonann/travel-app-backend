@@ -39,8 +39,8 @@ public class User {
     private String userEmail;
     
     @Column(
-        nullable = false,
-        name = "user_first_name"
+        name = "user_first_name",
+        nullable = false
     )
     private String userFirstName;
 

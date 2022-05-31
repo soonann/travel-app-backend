@@ -13,24 +13,27 @@ import javax.persistence.Table;
 public class PremadeTrip {
 
     @Id
+    @Column(
+        name = "trip_code"
+    )
     private String tripCode;
 
     @Column(
-        nullable = false,
-        name = "trip_name"
+        name = "trip_name",
+        nullable = false
     )
     private String tripName;
 
         
     @Column(
-        nullable = false,
-        name = "trip_country"
+        name = "trip_country",
+        nullable = false
     )
     private String tripCountry;
             
     @Column(
-        nullable = false,
-        name = "trip_duration"
+        name = "trip_duration",
+        nullable = false
     )
     private Integer tripDuration;
 

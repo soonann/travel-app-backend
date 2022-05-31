@@ -16,15 +16,7 @@ import javax.persistence.Table;
 @Table(name = "CustomTrip")
 public class CustomTrip {
     @Id
-    @SequenceGenerator(
-        name = "customtrip_sequence",
-        sequenceName = "customtrip_sequence",
-        allocationSize = 1
-    )
-    @GeneratedValue(
-        generator = "customtrip_sequence",
-        strategy = GenerationType.SEQUENCE
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column( 
         name = "trip_id",
         nullable = false
