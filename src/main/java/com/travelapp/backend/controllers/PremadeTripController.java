@@ -2,14 +2,13 @@ package com.travelapp.backend.controllers;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import com.travelapp.backend.models.PremadeTrip;
 import com.travelapp.backend.services.PremadeTripService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
-@RequestMapping( path = "/api/v1/premadetrip")
+@RequestMapping( path = "api/v1/premadetrip")
 public class PremadeTripController {
     
     
@@ -28,43 +27,42 @@ public class PremadeTripController {
         this.premadeTripService = premadeTripService;
     }
 
-    @PostMapping
-    public void createNewPremadeTrip(
-        @RequestBody PremadeTrip premadeTrip){
-        this.premadeTripService.createNewPremadeTrip(premadeTrip);
-    }
-
     @GetMapping
     public List<PremadeTrip> getAllPremadeTrips(){
-        return this.premadeTripService.getAllPremadeTrips();
+        return this.premadeTripService.retrieveAllPremadeTrips();
     }
 
 
-    @GetMapping(path = "{code}")
+    @GetMapping(path = "{tripCode}")
     public PremadeTrip getPremadeTripByCode(
-        @PathParam("code") String code
+        @PathVariable("tripCode") String code
     ){
         
-        return this.premadeTripService.getPremadeTripByCode(code);
+        return this.premadeTripService.retrievePremadeTripByCode(code);
+    }
+    
+    @PostMapping
+    public PremadeTrip postNewPremadeTrip(
+        @RequestBody PremadeTrip premadeTrip){
+        return this.premadeTripService.createNewPremadeTrip(premadeTrip);
     }
 
 
-
-    @PutMapping(path = "{code}")
-    public void updatePremadeTripByCode(
-        @PathParam("code") String code,
+    @PutMapping(path = "{tripCode}")
+    public PremadeTrip putPremadeTripByCode(
+        @PathVariable("tripCode") String tripCode,
         @RequestBody PremadeTrip premadeTrip
     ){
-        System.out.println("Controller Layer");
-        premadeTrip.setTripCode(code);
-        this.premadeTripService.updatePremadeTripByCode(premadeTrip);
-        
+       
+        return this.premadeTripService.updatePremadeTripByCode(tripCode, premadeTrip);
     }
 
 
 
-    @DeleteMapping(path = "{code}")
-    public void deletePremadeTripByCode(@PathParam("code") String code){
+    @DeleteMapping(path = "{tripCode}")
+    public void deletePremadeTripByCode(
+        @PathVariable("tripCode") String code
+    ){
         this.premadeTripService.deletePremadeTripByCode(code);
         
     }

@@ -17,78 +17,98 @@ public class PremadeTrip {
 
     @Column(
         nullable = false,
-        name = "name"
+        name = "trip_name"
     )
-    private String name;
+    private String tripName;
 
         
     @Column(
         nullable = false,
-        name = "country"
+        name = "trip_country"
     )
-    private String country;
+    private String tripCountry;
             
     @Column(
         nullable = false,
-        name = "duration"
+        name = "trip_duration"
     )
-    private Integer duration;
+    private Integer tripDuration;
 
 
     // Relations
     @OneToMany(mappedBy = "premadeTrip")
-    private List<PremadeTripItem> premadeTripItems;
-
-    
+    private List<PremadeTripItem> tripItemsList;
 
     public PremadeTrip() {
+
     }
 
-    public PremadeTrip(String tripCode, String name, String country, Integer duration) {
+
+    public PremadeTrip(String tripCode, String tripName, String tripCountry, Integer tripDuration) {
         this.tripCode = tripCode;
-        this.name = name;
-        this.country = country;
-        this.duration = duration;
+        this.tripName = tripName;
+        this.tripCountry = tripCountry;
+        this.tripDuration = tripDuration;
     }
+
+
 
     public String getTripCode() {
         return tripCode;
     }
 
+
+
     public void setTripCode(String tripCode) {
         this.tripCode = tripCode;
     }
 
-    public String getName() {
-        return name;
+
+
+    public String getTripName() {
+        return tripName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
     }
 
-    public String getCountry() {
-        return country;
+
+
+    public String getTripCountry() {
+        return tripCountry;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+
+
+    public void setTripCountry(String tripCountry) {
+        this.tripCountry = tripCountry;
     }
 
-    public Integer getDuration() {
-        return duration;
+
+
+    public Integer getTripDuration() {
+        return tripDuration;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+
+
+    public void setTripDuration(Integer tripDuration) {
+        this.tripDuration = tripDuration;
     }
+
+
 
     public List<PremadeTripItem> getPremadeTripItems() {
-        return premadeTripItems;
+        return tripItemsList;
     }
 
-    public void setPremadeTripItems(List<PremadeTripItem> premadeTripItems) {
-        this.premadeTripItems = premadeTripItems;
+
+
+    public void setPremadeTripItems(List<PremadeTripItem> tripItemsList) {
+        this.tripItemsList = tripItemsList;
     }
     
     

@@ -4,33 +4,41 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "premade_trip_item")
-@Table(name = "premade_trip_item")
+@Table(
+    name = "premade_trip_item"
+)
 public class PremadeTripItem {
     
     @Id
-    private Integer tripId;
+    @Column(
+        name = "trip_item_id"
+    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer tripItemId;
 
     @Column( 
-        name = "day",
+        name = "trip_item_days",
         nullable = false
     )
-    private Integer day;
+    private Integer tripItemDays;
 
     @Column( 
-        name = "time",
+        name = "trip_item_time",
         nullable = false
     )
-    private LocalTime time;
+    private LocalTime tripItemTime;
 
     @Column( 
-        name = "description"
+        name = "trip_item_description"
     )
-    private String description;
+    private String tripItemDescription;
 
     // Relations
 
@@ -40,43 +48,42 @@ public class PremadeTripItem {
     public PremadeTripItem() {
     }
 
-    public PremadeTripItem(Integer tripId, Integer day, LocalTime time, String description) {
-        this.tripId = tripId;
-        this.day = day;
-        this.time = time;
-        this.description = description;
+    public PremadeTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription) {
+        this.tripItemDays = tripItemDays;
+        this.tripItemTime = tripItemTime;
+        this.tripItemDescription = tripItemDescription;
     }
 
-    public Integer getTripId() {
-        return tripId;
+    public Integer getTripItemId() {
+        return tripItemId;
     }
 
-    public void setTripId(Integer tripId) {
-        this.tripId = tripId;
+    public void setTripItemId(Integer tripItemId) {
+        this.tripItemId = tripItemId;
     }
 
-    public Integer getDay() {
-        return day;
+    public Integer getTripItemDays() {
+        return tripItemDays;
     }
 
-    public void setDay(Integer day) {
-        this.day = day;
+    public void setTripItemDays(Integer tripItemDays) {
+        this.tripItemDays = tripItemDays;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public LocalTime getTripItemTime() {
+        return tripItemTime;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setTripItemTime(LocalTime tripItemTime) {
+        this.tripItemTime = tripItemTime;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTripItemDescription() {
+        return tripItemDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTripItemDescription(String tripItemDescription) {
+        this.tripItemDescription = tripItemDescription;
     }
 
     public PremadeTrip getPremadeTrip() {
@@ -86,6 +93,8 @@ public class PremadeTripItem {
     public void setPremadeTrip(PremadeTrip premadeTrip) {
         this.premadeTrip = premadeTrip;
     }
+
+    
     
     
 
