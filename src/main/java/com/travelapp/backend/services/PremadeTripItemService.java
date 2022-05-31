@@ -24,15 +24,21 @@ public class PremadeTripItemService {
     }
 
 
-    // public PremadeTripItem retrievePremadeTripItemByCodeAndID(String premadeTripCode, Integer premadeTripItemId){
-    //     // PremadeTripItem premadeTripItem = new PremadeTripItem();
-    //     // PremadeTrip premadeTrip = new PremadeTrip();
-    //     // premadeTrip.setTripCode(premadeTripCode);
-    //     // premadeTripItem.setPremadeTrip(premadeTrip);
-    //     // premadeTripItem.setTripId(premadeTripItemId);
+    // public PremadeTripItem retrievePremadeTripItemByTripIdAndTripCode(String premadeTripCode, Integer premadeTripItemId){
+        // PremadeTripItem premadeTripItem = new PremadeTripItem();
+        // PremadeTrip premadeTrip = new PremadeTrip();
+        // premadeTrip.setTripCode(premadeTripCode);
+        // premadeTripItem.setPremadeTrip(premadeTrip);
+        // premadeTripItem.setTripId(premadeTripItemId);
         
-    //     PremadeTripItem premadeTripItem = this.premadeTripItemRepository.findByTripCodeAndTripItemId(premadeTripCode, premadeTripItemId).orElseThrow(()-> new RuntimeException("Premade Trip doesn't exist"));
+    //     PremadeTripItem premadeTripItem = this.premadeTripItemRepository.findByTripItemIdAndTripCode(premadeTripItemId, premadeTripCode).orElseThrow(()-> new RuntimeException("Premade Trip doesn't exist"));
     //     return premadeTripItem;
     // }
+
+    public PremadeTripItem createPremadeTripItem(PremadeTripItem premadeTripItem){
+        
+        return this.premadeTripItemRepository.save(premadeTripItem);
+
+    }
 
 }

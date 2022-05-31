@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,8 +44,14 @@ public class PremadeTripItem {
 
     // Relations
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(
+        name="trip_code", 
+        nullable=false
+    )
     private PremadeTrip premadeTrip;
+
+ 
 
     public PremadeTripItem() {
     }
@@ -53,6 +61,8 @@ public class PremadeTripItem {
         this.tripItemTime = tripItemTime;
         this.tripItemDescription = tripItemDescription;
     }
+
+    
 
     public Integer getTripItemId() {
         return tripItemId;

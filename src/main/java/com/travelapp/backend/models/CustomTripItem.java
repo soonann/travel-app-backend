@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "CustomTripItem")
@@ -16,31 +17,35 @@ public class CustomTripItem {
 
     @Id
     @Column(
-        name = "trip_id"
+        name = "trip_item_id"
     )
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer tripId;
+    private Integer tripItemId;
 
     @Column(
         name = "trip_description",
         nullable = false
     )
-    private String tripDescription;
+    private String tripItemDescription;
 
     @Column(
         name = "trip_days",
         nullable = false
     )
-    private Integer tripDays;
+    private Integer tripItemDays;
 
     @Column(
         name = "trip_time",
         nullable = false
     )
-    private LocalTime tripTime;
+    private LocalTime tripItemTime;
     
     // Relations
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(
+        name = "trip_id",
+        nullable = false
+    )
     private CustomTrip customTrip;
 
 
@@ -48,44 +53,42 @@ public class CustomTripItem {
       
     }
 
-    public CustomTripItem(Integer tripDays, LocalTime tripTime, String tripDescription) {
-        this.tripDays = tripDays;
-        this.tripTime = tripTime;
-        this.tripDescription = tripDescription;
+    public CustomTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription) {
+        this.tripItemDays = tripItemDays;
+        this.tripItemTime = tripItemTime;
+        this.tripItemDescription = tripItemDescription;
     }
 
-    
-
-    public Integer getTripId() {
-        return tripId;
+    public Integer getTripItemId() {
+        return tripItemId;
     }
 
-    public void setTripId(Integer tripId) {
-        this.tripId = tripId;
+    public void setTripItemId(Integer tripItemId) {
+        this.tripItemId = tripItemId;
     }
 
-    public String getTripDescription() {
-        return tripDescription;
+    public String getTripItemDescription() {
+        return tripItemDescription;
     }
 
-    public void setTripDescription(String tripDescription) {
-        this.tripDescription = tripDescription;
+    public void setTripItemDescription(String tripItemDescription) {
+        this.tripItemDescription = tripItemDescription;
     }
 
-    public Integer getTripDays() {
-        return tripDays;
+    public Integer getTripItemDays() {
+        return tripItemDays;
     }
 
-    public void setTripDays(Integer tripDays) {
-        this.tripDays = tripDays;
+    public void setTripItemDays(Integer tripItemDays) {
+        this.tripItemDays = tripItemDays;
     }
 
-    public LocalTime getTripTime() {
-        return tripTime;
+    public LocalTime getTripItemTime() {
+        return tripItemTime;
     }
 
-    public void setTripTime(LocalTime tripTime) {
-        this.tripTime = tripTime;
+    public void setTripItemTime(LocalTime tripItemTime) {
+        this.tripItemTime = tripItemTime;
     }
 
     public CustomTrip getCustomTrip() {
@@ -96,9 +99,7 @@ public class CustomTripItem {
         this.customTrip = customTrip;
     }
 
-
-
     
-    
+
     
 }

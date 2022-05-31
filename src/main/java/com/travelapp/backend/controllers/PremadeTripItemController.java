@@ -8,6 +8,9 @@ import com.travelapp.backend.services.PremadeTripItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +25,7 @@ public class PremadeTripItemController {
         this.premadeTripItemService= premadeTripItemService;
     }
 
-    @GetMapping()
+    @GetMapping
     public List<PremadeTripItem> getAllPremadeTripItems(){
         return this.premadeTripItemService.retrieveAllPremadeTripItems();
     }
@@ -32,7 +35,17 @@ public class PremadeTripItemController {
     //     @PathVariable("{tripCode}") String tripCode,
     //     @PathVariable("{tripItemId}") Integer tripItemId
     // ){
-    //     return this.premadeTripItemService.retrievePremadeTripItemByCodeAndID(tripCode, tripItemId);
+    //     return this.premadeTripItemService.retrievePremadeTripItemByTripIdAndTripCode(tripCode, tripItemId);
     // }
+
+    
+    @PostMapping(path="{tripCode}")
+    public PremadeTripItem postPremadeTripItem (
+        @PathVariable("tripCode") String tripCode,
+        @RequestBody PremadeTripItem premadeTripItem
+    ){
+        
+        return this.premadeTripItemService.createPremadeTripItem(premadeTripItem);
+    }
 
 }
