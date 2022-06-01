@@ -2,6 +2,7 @@ package com.travelapp.backend.controllers;
 
 import java.util.List;
 
+import com.travelapp.backend.models.PremadeTrip;
 import com.travelapp.backend.models.PremadeTripItem;
 import com.travelapp.backend.services.PremadeTripItemService;
 
@@ -30,13 +31,20 @@ public class PremadeTripItemController {
         return this.premadeTripItemService.retrieveAllPremadeTripItems();
     }
 
-    // @GetMapping(path="/{tripCode}/{tripItemId}")
-    // public PremadeTripItem getPremadeTripItem(
-    //     @PathVariable("{tripCode}") String tripCode,
-    //     @PathVariable("{tripItemId}") Integer tripItemId
-    // ){
-    //     return this.premadeTripItemService.retrievePremadeTripItemByTripIdAndTripCode(tripCode, tripItemId);
-    // }
+    @GetMapping(path="/{tripCode}/{tripItemId}")
+    public PremadeTripItem getPremadeTripItemByTripCodeAndTripItemId(
+        @PathVariable("tripCode") String tripCode,
+        @PathVariable("tripItemId") Integer tripItemId
+    ){
+        return this.premadeTripItemService.retrievePremadeTripItemByTripCodeAndTripItemId(tripCode, tripItemId);
+    }
+
+    @GetMapping(path="/{tripCode}")
+    public List<PremadeTripItem> getAllPremadeTripItemsByTripCode(
+        @PathVariable("tripCode") String tripCode
+    ){
+        return this.premadeTripItemService.retrieveAllPremadeTripItemByTripCode(tripCode);
+    }
 
     
     @PostMapping(path="{tripCode}")
@@ -44,8 +52,7 @@ public class PremadeTripItemController {
         @PathVariable("tripCode") String tripCode,
         @RequestBody PremadeTripItem premadeTripItem
     ){
-        
-        return this.premadeTripItemService.createPremadeTripItem(premadeTripItem);
+        return this.premadeTripItemService.createPremadeTripItem(tripCode, premadeTripItem);
     }
 
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.travelapp.backend.models.PremadeTrip;
+import com.travelapp.backend.models.PremadeTripItem;
+import com.travelapp.backend.repositories.PremadeTripItemRepository;
 import com.travelapp.backend.repositories.PremadeTripRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,12 @@ import org.springframework.stereotype.Service;
 public class PremadeTripService {
     
     private PremadeTripRepository premadeTripRepository;
+    private PremadeTripItemRepository premadeTripItemRepository;
 
     @Autowired
-    public PremadeTripService(PremadeTripRepository premadeTripRepository) {
+    public PremadeTripService(PremadeTripRepository premadeTripRepository, PremadeTripItemRepository premadeTripItemRepository) {
         this.premadeTripRepository = premadeTripRepository;
+        this.premadeTripItemRepository = premadeTripItemRepository;
     }
 
     public List<PremadeTrip> retrieveAllPremadeTrips(){
@@ -30,10 +34,18 @@ public class PremadeTripService {
     }
 
     public PremadeTrip createNewPremadeTrip(PremadeTrip premadeTrip){
+
         if (this.premadeTripRepository.findById(premadeTrip.getTripCode()).isPresent()){
             throw new RuntimeException("PremadeTrip with Trip Code already exists");
         }
-        this.premadeTripRepository.save(premadeTrip);
+        
+        // necessary?
+        PremadeTrip savedPremadeTrip = this.premadeTripRepository.save(premadeTrip);
+
+        for (PremadeTripItem items: premadeTrip.getPremadeTripItems()){
+            items.setPremadeTrip(savedPremadeTrip);
+        }
+        this.premadeTripItemRepository.saveAll(premadeTrip.getPremadeTripItems());
         return premadeTrip;
     }
 
@@ -59,11 +71,7 @@ public class PremadeTripService {
             premadeTrip.setTripDuration(params.getTripDuration());
         }
 
-        if (params.getPremadeTripItems() != null){
-            premadeTrip.getPremadeTripItems().addAll(params.getPremadeTripItems());
-        }
 
-        // TODO: Validate premade trip items
         if (params.getPremadeTripItems() != null && !params.getPremadeTripItems().isEmpty()){
 
             if (premadeTrip.getPremadeTripItems() != null && !premadeTrip.getPremadeTripItems().isEmpty()){

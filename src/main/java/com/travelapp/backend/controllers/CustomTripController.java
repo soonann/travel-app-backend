@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "api/v1/customtrip")
 public class CustomTripController {
-
+    
     private CustomTripService customTripService;
 
     @Autowired
