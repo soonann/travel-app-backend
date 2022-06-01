@@ -63,6 +63,17 @@ public class PremadeTripService {
             premadeTrip.getPremadeTripItems().addAll(params.getPremadeTripItems());
         }
 
+        // TODO: Validate premade trip items
+        if (params.getPremadeTripItems() != null && !params.getPremadeTripItems().isEmpty()){
+
+            if (premadeTrip.getPremadeTripItems() != null && !premadeTrip.getPremadeTripItems().isEmpty()){
+                premadeTrip.getPremadeTripItems().addAll(params.getPremadeTripItems());
+            }
+            else {
+                premadeTrip.setPremadeTripItems(params.getPremadeTripItems());
+            }
+            
+        }
 
         this.premadeTripRepository.save(premadeTrip);
         return premadeTrip;

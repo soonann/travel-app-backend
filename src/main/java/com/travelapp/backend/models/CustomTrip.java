@@ -131,13 +131,13 @@ public class CustomTrip {
 
 
 
-    public User getTuser() {
+    public User getUser() {
         return user;
     }
 
 
 
-    public void setTuser(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
