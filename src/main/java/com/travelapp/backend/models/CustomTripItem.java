@@ -2,6 +2,7 @@ package com.travelapp.backend.models;
 
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "CustomTripItem")
 @Table(name = "CustomTripItem")
@@ -22,11 +25,6 @@ public class CustomTripItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer tripItemId;
 
-    @Column(
-        name = "trip_description",
-        nullable = false
-    )
-    private String tripItemDescription;
 
     @Column(
         name = "trip_days",
@@ -40,11 +38,24 @@ public class CustomTripItem {
     )
     private LocalTime tripItemTime;
     
+
+    @Column(
+        name = "trip_description",
+        nullable = false
+    )
+    private String tripItemDescription;
+
+
     // Relations
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(
+        cascade = CascadeType.ALL, 
+        optional = false
+    )
     @JoinColumn(
         name = "trip_id",
-        nullable = false
+        nullable = false,
+        referencedColumnName = "trip_id"
     )
     private CustomTrip customTrip;
 

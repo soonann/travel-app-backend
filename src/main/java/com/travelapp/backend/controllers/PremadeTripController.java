@@ -76,7 +76,7 @@ public class PremadeTripController {
 
 
 
-    
+
     @GetMapping(path = "/all/item")
     public List<PremadeTripItem> getAllPremadeTripItems(){
         return this.premadeTripService.retrieveAllPremadeTripItems();
@@ -90,11 +90,11 @@ public class PremadeTripController {
     }
 
     @GetMapping(path="/{tripCode}/item/{tripItemId}")
-    public PremadeTripItem getPremadeTripItemByTripCodeAndTripItemId(
+    public PremadeTripItem getPremadeTripItemByTripCodeAndItemId(
         @PathVariable("tripCode") String tripCode,
-        @PathVariable("tripItemId") Integer tripItemId
+        @PathVariable("tripItemId") Integer itemId
     ){
-        return this.premadeTripService.retrievePremadeTripItemByTripCodeAndTripItemId(tripCode, tripItemId);
+        return this.premadeTripService.retrievePremadeTripItemByTripCodeAndItemId(tripCode,  itemId);
     }
 
     
@@ -107,6 +107,13 @@ public class PremadeTripController {
     }
     
 
+    @DeleteMapping(path="/{tripCode}/item/{tripItemId}")
+    public void deletePremadeTripItemByTripCodeAndItemId(
+        @PathVariable("tripCode") String tripCode,
+        @PathVariable("tripItemId") Integer itemId
+    ){
+        this.premadeTripService.deletePremadeTripItemByTripCodeAndItemId(tripCode, itemId);
+    }
     
     
     

@@ -29,14 +29,14 @@ public class PremadeTripService {
     }
 
     public PremadeTrip retrievePremadeTripByCode(String code){
-        return this.premadeTripRepository.findById(code).orElseThrow(() -> new RuntimeException("PremadeTrip code doesn't exist"));
+        return this.premadeTripRepository.findById(code).orElseThrow(() -> new RuntimeException("tripCode does not exist"));
         
     }
 
     public PremadeTrip createNewPremadeTrip(PremadeTrip premadeTrip){
 
         if (this.premadeTripRepository.findById(premadeTrip.getTripCode()).isPresent()){
-            throw new RuntimeException("PremadeTrip with Trip Code already exists");
+            throw new RuntimeException("PremadeTrip with tripCode already exists");
         }
         
         // necessary?
@@ -51,10 +51,10 @@ public class PremadeTripService {
 
     @Transactional
     public PremadeTrip updatePremadeTripByCode(
-        String paramsTripCode,
+        String tripCode,
         PremadeTrip params
     ){
-        PremadeTrip premadeTrip = this.premadeTripRepository.findById(paramsTripCode).orElseThrow( () -> new RuntimeException() );
+        PremadeTrip premadeTrip = this.premadeTripRepository.findById(tripCode).orElseThrow( () -> new RuntimeException() );
         
         // TODO: Change TripCode
 
@@ -74,15 +74,19 @@ public class PremadeTripService {
 
         if (params.getPremadeTripItems() != null && !params.getPremadeTripItems().isEmpty()){
 
+            for (PremadeTripItem item: params.getPremadeTripItems()){
+                item.setPremadeTrip(premadeTrip);
+            }
+
             if (premadeTrip.getPremadeTripItems() != null && !premadeTrip.getPremadeTripItems().isEmpty()){
                 premadeTrip.getPremadeTripItems().addAll(params.getPremadeTripItems());
             }
             else {
                 premadeTrip.setPremadeTripItems(params.getPremadeTripItems());
             }
-            
+            premadeTrip.setPremadeTripItems(this.premadeTripItemRepository.saveAll(params.getPremadeTripItems()));
         }
-
+        
         this.premadeTripRepository.save(premadeTrip);
         return premadeTrip;
     }
@@ -99,29 +103,64 @@ public class PremadeTripService {
     }
 
 
-    public List<PremadeTripItem> retrieveAllPremadeTripItemByTripCode(String premadeTripCode){
-        this.premadeTripRepository.findById(premadeTripCode)
-        .orElseThrow( () -> new RuntimeException("TripCode does not exist"));
-        
-        return this.premadeTripItemRepository.findAllByPremadeTripTripCode(premadeTripCode);
+    public List<PremadeTripItem> retrieveAllPremadeTripItemByTripCode(String tripCode){
+        this.premadeTripRepository.findById(tripCode)
+        .orElseThrow( () -> new RuntimeException("tripCode does not exist"));
+
+        return this.premadeTripItemRepository.findAllByPremadeTripTripCode(tripCode);
     }
 
     
-    public PremadeTripItem retrievePremadeTripItemByTripCodeAndTripItemId(String premadeTripCode, Integer premadeTripItemId) {
-        this.premadeTripRepository.findById(premadeTripCode)
-        .orElseThrow( () -> new RuntimeException("TripCode does not exist"));
+    public PremadeTripItem retrievePremadeTripItemByTripCodeAndItemId(String tripCode, Integer itemId) {
+        this.premadeTripRepository.findById(tripCode)
+        .orElseThrow( () -> new RuntimeException("tripCode does not exist"));
 
-        PremadeTripItem premadeTripItem = this.premadeTripItemRepository.findByTripItemIdAndPremadeTripTripCode(premadeTripItemId, premadeTripCode)
-        .orElseThrow(() -> new RuntimeException("Could not find PremadeTripItem with TripCode"));
+        PremadeTripItem premadeTripItem = this.premadeTripItemRepository.findByTripItemIdAndPremadeTripTripCode(itemId, tripCode)
+        .orElseThrow(() -> new RuntimeException("itemId does not exist"));
         return premadeTripItem;
     }
 
 
     public PremadeTripItem createPremadeTripItem(String tripCode, PremadeTripItem premadeTripItem){
         PremadeTrip premadeTrip = this.premadeTripRepository.findById(tripCode)
-        .orElseThrow( ()-> new RuntimeException("TripCode does not exist"));
+        .orElseThrow( ()-> new RuntimeException("tripCode does not exist"));
 
         premadeTripItem.setPremadeTrip(premadeTrip);
+        return this.premadeTripItemRepository.save(premadeTripItem);
+
+    }
+
+    public void deletePremadeTripItemByTripCodeAndItemId(String tripCode, Integer itemId){
+        this.premadeTripRepository.findById(tripCode)
+        .orElseThrow( ()-> new RuntimeException("tripCode does not exist"));
+        this.premadeTripItemRepository.findByTripItemIdAndPremadeTripTripCode(itemId, tripCode)
+        .orElseThrow( ()-> new RuntimeException("itemId does not exist"));
+
+        this.premadeTripItemRepository.deleteById(itemId);
+
+    }
+
+    public PremadeTripItem updatePremadeTripItemByTripCodeAndItemId(String tripCode, Integer itemId, PremadeTripItem params){
+        PremadeTrip premadeTrip = this.premadeTripRepository.findById(tripCode)
+        .orElseThrow( ()-> new RuntimeException("tripCode does not exist"));
+        
+        PremadeTripItem premadeTripItem = this.premadeTripItemRepository.findByTripItemIdAndPremadeTripTripCode(itemId, tripCode)
+        .orElseThrow( ()-> new RuntimeException("itemId does not exist"));
+
+        premadeTripItem.setPremadeTrip(premadeTrip);
+
+        if (params.getTripItemDays() != null){
+            premadeTripItem.setTripItemDays(params.getTripItemDays());
+        }   
+
+        if (params.getTripItemDescription() != null){
+            premadeTripItem.setTripItemDescription(params.getTripItemDescription());
+        }
+
+        if (params.getTripItemTime() != null){
+            premadeTripItem.setTripItemTime(params.getTripItemTime());
+        }
+
         return this.premadeTripItemRepository.save(premadeTripItem);
 
     }

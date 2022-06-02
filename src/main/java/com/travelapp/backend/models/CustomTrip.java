@@ -36,15 +36,14 @@ public class CustomTrip {
     private String tripCountry;
 
     @Column( 
-        name = "trip_duration",
-        nullable = false
+        name = "trip_duration"
     )
     private Integer tripDuration;
 
     @Column( 
         name = "trip_code"
     )
-    private String tripCode;
+    private String customTripCode;
 
     // Relations
 
@@ -66,7 +65,7 @@ public class CustomTrip {
         this.tripName = tripName;
         this.tripCountry = tripCountry;
         this.tripDuration = tripDuration;
-        this.tripCode = tripCode;
+        this.customTripCode = tripCode;
     }
 
 
@@ -120,13 +119,13 @@ public class CustomTrip {
 
 
     public String getTripCode() {
-        return tripCode;
+        return customTripCode;
     }
 
 
 
     public void setTripCode(String tripCode) {
-        this.tripCode = tripCode;
+        this.customTripCode = tripCode;
     }
 
 
