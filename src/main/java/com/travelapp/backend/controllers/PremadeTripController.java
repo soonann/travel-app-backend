@@ -3,6 +3,7 @@ package com.travelapp.backend.controllers;
 import java.util.List;
 
 import com.travelapp.backend.models.PremadeTrip;
+import com.travelapp.backend.models.PremadeTripItem;
 import com.travelapp.backend.services.PremadeTripService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,43 @@ public class PremadeTripController {
         
     }
 
+
+
+
+    // Premade trip items below ----------------
+
+
+
+
+    
+    @GetMapping(path = "/all/item")
+    public List<PremadeTripItem> getAllPremadeTripItems(){
+        return this.premadeTripService.retrieveAllPremadeTripItems();
+    }
+
+    @GetMapping(path="/{tripCode}/item")
+    public List<PremadeTripItem> getAllPremadeTripItemsByTripCode(
+        @PathVariable("tripCode") String tripCode
+    ){
+        return this.premadeTripService.retrieveAllPremadeTripItemByTripCode(tripCode);
+    }
+
+    @GetMapping(path="/{tripCode}/item/{tripItemId}")
+    public PremadeTripItem getPremadeTripItemByTripCodeAndTripItemId(
+        @PathVariable("tripCode") String tripCode,
+        @PathVariable("tripItemId") Integer tripItemId
+    ){
+        return this.premadeTripService.retrievePremadeTripItemByTripCodeAndTripItemId(tripCode, tripItemId);
+    }
+
+    
+    @PostMapping(path="/{tripCode}/item")
+    public PremadeTripItem postPremadeTripItem (
+        @PathVariable("tripCode") String tripCode,
+        @RequestBody PremadeTripItem premadeTripItem
+    ){
+        return this.premadeTripService.createPremadeTripItem(tripCode, premadeTripItem);
+    }
     
 
     
