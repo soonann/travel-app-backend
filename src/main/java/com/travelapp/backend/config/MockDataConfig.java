@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class GenericConfig {
+public class MockDataConfig {
     
     // TODO: Add some sample data
     // @Bean
