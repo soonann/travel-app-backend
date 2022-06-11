@@ -7,6 +7,7 @@ import com.travelapp.backend.models.PremadeTripItem;
 import com.travelapp.backend.services.PremadeTripService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
 @RequestMapping( path = "api/v1/premadetrip")
+@PreAuthorize("hasAuthority('SCOPE_http://localhost:8080/heap-travel-app-backend')")
 public class PremadeTripController {
     
     
