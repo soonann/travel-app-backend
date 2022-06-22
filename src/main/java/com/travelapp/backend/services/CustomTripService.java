@@ -153,6 +153,10 @@ public class CustomTripService {
             customTripItem.setTripItemTime(params.getTripItemTime());
         }
 
+        if (params.getTripItemPrice() != null){
+            customTripItem.setTripItemPrice(params.getTripItemPrice());
+        }
+
         return this.customTripItemRepository.save(customTripItem);
     }
 
