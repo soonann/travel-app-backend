@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -69,7 +70,11 @@ public class CustomTripController {
     // CustomTripItem below ----------------
 
     @GetMapping(path = "/all/item")
-    public List<CustomTripItem> getAllCustomTripItems(){
+    public List<CustomTripItem> getAllCustomTripItems(@RequestParam ("maxPrice") String maxPrice){
+        if (maxPrice != null){
+            return customTripService.retrieveAllCustomTripItemByLessThanMaxPrice(maxPrice);
+        }
+
         return this.customTripService.retrieveAllCustomTripItems();
     }
 
@@ -113,6 +118,5 @@ public class CustomTripController {
     ){
         this.customTripService.deleteCustomTripItemBytripIdAndItemId(itemId, tripId);
     }
-
 
 }

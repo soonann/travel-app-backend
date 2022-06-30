@@ -1,5 +1,6 @@
 package com.travelapp.backend.repositories;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,4 +13,5 @@ import com.travelapp.backend.models.CustomTripItem;
 public interface CustomTripItemRepository extends JpaRepository<CustomTripItem, Integer>{
     Optional<CustomTripItem> findByTripItemIdAndCustomTripTripId (Integer itemId, Integer tripId);
     List<CustomTripItem> findAllByCustomTripTripId (Integer tripId);
+    List<CustomTripItem> findByTripItemPriceLessThan(BigDecimal itemPrice);
 }

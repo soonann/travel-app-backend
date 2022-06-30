@@ -1,5 +1,6 @@
 package com.travelapp.backend.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.management.RuntimeErrorException;
@@ -108,6 +109,21 @@ public class CustomTripService {
         this.customTripRepository.findById(tripId)
         .orElseThrow(() -> new RuntimeException("tripId does not exist"));
         return this.customTripItemRepository.findAllByCustomTripTripId(tripId);
+    }
+
+    public List<CustomTripItem> retrieveAllCustomTripItemByLessThanMaxPrice(String itemPrice){
+        try {
+            BigDecimal maxItemPrice = new BigDecimal(itemPrice);
+
+            if (maxItemPrice.compareTo(new BigDecimal(1)) >= 0){
+                return customTripItemRepository.findByTripItemPriceLessThan(maxItemPrice);
+            } else {
+                throw new IllegalArgumentException("Invalid Value");
+            }
+
+        } catch (Exception e){
+            return null;
+        }
     }
 
     public CustomTripItem retrieveCustomTripItemByTripIdAndItemId (Integer tripId, Integer itemId){
