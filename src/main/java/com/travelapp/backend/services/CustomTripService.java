@@ -16,69 +16,64 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomTripService {
 
-
     private CustomTripRepository customTripRepository;
     private CustomTripItemRepository customTripItemRepository;
-    
+
     @Autowired
     public CustomTripService(
-        CustomTripRepository customTripRepository,
-        CustomTripItemRepository customTripItemRepository
-    ) {
+            CustomTripRepository customTripRepository,
+            CustomTripItemRepository customTripItemRepository) {
         this.customTripRepository = customTripRepository;
         this.customTripItemRepository = customTripItemRepository;
     }
 
-    public CustomTrip retrieveCustomTripById(Integer tripId){
-        return this.customTripRepository.findById(tripId).orElseThrow( () -> new RuntimeException("Could not find requested CustomTrip"));
+    public CustomTrip retrieveCustomTripById(Integer tripId) {
+        return this.customTripRepository.findById(tripId)
+                .orElseThrow(() -> new RuntimeException("Could not find requested CustomTrip"));
     }
-    
 
-    public List<CustomTrip> retrieveAllCustomTrips(){
+    public List<CustomTrip> retrieveAllCustomTrips() {
         return this.customTripRepository.findAll();
     }
 
-
-    public CustomTrip createNewCustomTrip(CustomTrip customTrip){
+    public CustomTrip createNewCustomTrip(CustomTrip customTrip) {
         return this.customTripRepository.save(customTrip);
     }
 
-    public CustomTrip updateCustomTripByTripId(Integer tripId, CustomTrip params){
+    public CustomTrip updateCustomTripByTripId(Integer tripId, CustomTrip params) {
         CustomTrip customTrip = this.customTripRepository.findById(params.getTripId())
-        .orElseThrow( () -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
 
-        if (params.getTripCode() != null){
+        if (params.getTripCode() != null) {
             customTrip.setTripCode(params.getTripCode());
         }
 
-        if (params.getTripCountry() != null){
+        if (params.getTripCountry() != null) {
             customTrip.setTripCountry(params.getTripCountry());
         }
 
-        if (params.getTripDuration() != null){
+        if (params.getTripDuration() != null) {
             customTrip.setTripDuration(params.getTripDuration());
         }
 
-        if (params.getTripName() != null){
+        if (params.getTripName() != null) {
             customTrip.setTripName(params.getTripName());
         }
 
-        
-        if (params.getCustomTripItems() != null && !params.getCustomTripItems().isEmpty()){
+        if (params.getCustomTripItems() != null && !params.getCustomTripItems().isEmpty()) {
             // has CustomTripItems
 
             List<CustomTripItem> customTripItemList = this.customTripItemRepository.findAllByCustomTripTripId(tripId);
-            
-            if ( customTripItemList.isEmpty()){
+
+            if (customTripItemList.isEmpty()) {
                 customTrip.setCustomTripItems(params.getCustomTripItems());
-            }
-            else {
+            } else {
                 customTripItemList.addAll(params.getCustomTripItems());
             }
             // TODO: sort out update vs post
             customTrip.setCustomTripItems(customTripItemList);
 
-            for (CustomTripItem item: params.getCustomTripItems()){
+            for (CustomTripItem item : params.getCustomTripItems()) {
                 item.setCustomTrip(customTrip);
             }
 
@@ -90,98 +85,90 @@ public class CustomTripService {
 
     }
 
-    public void deleteCustomTripByTripId(Integer tripId){
+    public void deleteCustomTripByTripId(Integer tripId) {
         this.customTripRepository.findById(tripId)
-        .orElseThrow( () -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
 
         this.customTripRepository.deleteById(tripId);
     }
 
-
     // CustomTripItems below
 
-
-    public List<CustomTripItem> retrieveAllCustomTripItems () {
+    public List<CustomTripItem> retrieveAllCustomTripItems() {
         return this.customTripItemRepository.findAll();
     }
 
-    public List<CustomTripItem> retrieveAllCustomTripItemByTripId (Integer tripId){
+    public List<CustomTripItem> retrieveAllCustomTripItemByTripId(Integer tripId) {
         this.customTripRepository.findById(tripId)
-        .orElseThrow(() -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
         return this.customTripItemRepository.findAllByCustomTripTripId(tripId);
     }
 
-    public List<CustomTripItem> retrieveAllCustomTripItemByLessThanMaxPrice(String itemPrice){
-        try {
-            BigDecimal maxItemPrice = new BigDecimal(itemPrice);
+    public List<CustomTripItem> retrieveAllCustomTripItemByLessThanMaxPrice(String itemPrice) {
+        BigDecimal maxItemPrice = new BigDecimal(itemPrice);
 
-            if (maxItemPrice.compareTo(new BigDecimal(1)) >= 0){
-                return customTripItemRepository.findByTripItemPriceLessThan(maxItemPrice);
-            } else {
-                throw new IllegalArgumentException("Invalid Value");
-            }
-
-        } catch (Exception e){
-            return null;
+        if (maxItemPrice.compareTo(new BigDecimal(1)) >= 0) {
+            return customTripItemRepository.findByTripItemPriceLessThan(maxItemPrice);
+        } else {
+            System.out.println("hello");
+            throw new RuntimeException("Invalid Value");
         }
     }
 
-    public CustomTripItem retrieveCustomTripItemByTripIdAndItemId (Integer tripId, Integer itemId){
+    public CustomTripItem retrieveCustomTripItemByTripIdAndItemId(Integer tripId, Integer itemId) {
         this.customTripItemRepository.findById(tripId)
-        .orElseThrow(() -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
 
         return this.customTripItemRepository.findByTripItemIdAndCustomTripTripId(itemId, tripId)
-        .orElseThrow(() ->  new RuntimeException("itemId does not exist"));
+                .orElseThrow(() -> new RuntimeException("itemId does not exist"));
     }
 
-
-    public CustomTripItem createCustomTripItemByTripId(Integer tripId, CustomTripItem customTripItem){
+    public CustomTripItem createCustomTripItemByTripId(Integer tripId, CustomTripItem customTripItem) {
         CustomTrip customTrip = this.customTripRepository.findById(tripId)
-        .orElseThrow( () -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
 
         // TODO: Validation
-
-
 
         customTripItem.setCustomTrip(customTrip);
         return this.customTripItemRepository.save(customTripItem);
     }
 
-    public CustomTripItem updateCustomTripItemByTripIdAndItemId(Integer tripId, Integer itemId, CustomTripItem params){
-        
-        CustomTrip customTrip = this.customTripRepository.findById(tripId)
-        .orElseThrow(() -> new RuntimeException("tripId does not exist"));
+    public CustomTripItem updateCustomTripItemByTripIdAndItemId(Integer tripId, Integer itemId, CustomTripItem params) {
 
-        CustomTripItem customTripItem = this.customTripItemRepository.findByTripItemIdAndCustomTripTripId(itemId, tripId)
-        .orElseThrow(() ->  new RuntimeException("itemId does not exist"));
+        CustomTrip customTrip = this.customTripRepository.findById(tripId)
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
+
+        CustomTripItem customTripItem = this.customTripItemRepository
+                .findByTripItemIdAndCustomTripTripId(itemId, tripId)
+                .orElseThrow(() -> new RuntimeException("itemId does not exist"));
 
         customTripItem.setCustomTrip(customTrip);
 
-        if (params.getTripItemDays() != null){
+        if (params.getTripItemDays() != null) {
             customTripItem.setTripItemDays(params.getTripItemDays());
-        }   
+        }
 
-        if (params.getTripItemDescription() != null){
+        if (params.getTripItemDescription() != null) {
             customTripItem.setTripItemDescription(params.getTripItemDescription());
         }
 
-        if (params.getTripItemTime() != null){
+        if (params.getTripItemTime() != null) {
             customTripItem.setTripItemTime(params.getTripItemTime());
         }
 
-        if (params.getTripItemPrice() != null){
+        if (params.getTripItemPrice() != null) {
             customTripItem.setTripItemPrice(params.getTripItemPrice());
         }
 
         return this.customTripItemRepository.save(customTripItem);
     }
 
-    public void deleteCustomTripItemBytripIdAndItemId(Integer itemId, Integer tripId){
+    public void deleteCustomTripItemBytripIdAndItemId(Integer itemId, Integer tripId) {
         this.customTripRepository.findById(tripId)
-        .orElseThrow( () -> new RuntimeException("tripId does not exist"));
+                .orElseThrow(() -> new RuntimeException("tripId does not exist"));
 
         this.customTripItemRepository.findByTripItemIdAndCustomTripTripId(tripId, itemId)
-        .orElseThrow( () -> new RuntimeException("itemId does not exist"));
+                .orElseThrow(() -> new RuntimeException("itemId does not exist"));
 
         this.customTripItemRepository.deleteById(itemId);
     }
