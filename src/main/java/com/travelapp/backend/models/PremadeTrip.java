@@ -8,7 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity(name = "PremadeTrip")
 @Table(name = "PremadeTrip")
 public class PremadeTrip {
@@ -53,54 +57,6 @@ public class PremadeTrip {
         this.tripCode = tripCode;
         this.tripName = tripName;
         this.tripCountry = tripCountry;
-        this.tripDuration = tripDuration;
-    }
-
-
-
-    public String getTripCode() {
-        return tripCode;
-    }
-
-
-
-    public void setTripCode(String tripCode) {
-        this.tripCode = tripCode;
-    }
-
-
-
-    public String getTripName() {
-        return tripName;
-    }
-
-
-
-    public void setTripName(String tripName) {
-        this.tripName = tripName;
-    }
-
-
-
-    public String getTripCountry() {
-        return tripCountry;
-    }
-
-
-
-    public void setTripCountry(String tripCountry) {
-        this.tripCountry = tripCountry;
-    }
-
-
-
-    public Integer getTripDuration() {
-        return tripDuration;
-    }
-
-
-
-    public void setTripDuration(Integer tripDuration) {
         this.tripDuration = tripDuration;
     }
 

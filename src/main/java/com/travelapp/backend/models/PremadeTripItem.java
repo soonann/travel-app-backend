@@ -15,6 +15,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
 @Entity(name = "premade_trip_item")
 @Table(name = "premade_trip_item")
 public class PremadeTripItem {
@@ -57,40 +63,6 @@ public class PremadeTripItem {
     public PremadeTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription) {
         this.tripItemDays = tripItemDays;
         this.tripItemTime = tripItemTime;
-        this.tripItemDescription = tripItemDescription;
-    }
-
-    
-
-    public Integer getTripItemId() {
-        return tripItemId;
-    }
-
-    public void setTripItemId(Integer tripItemId) {
-        this.tripItemId = tripItemId;
-    }
-
-    public Integer getTripItemDays() {
-        return tripItemDays;
-    }
-
-    public void setTripItemDays(Integer tripItemDays) {
-        this.tripItemDays = tripItemDays;
-    }
-
-    public LocalTime getTripItemTime() {
-        return tripItemTime;
-    }
-
-    public void setTripItemTime(LocalTime tripItemTime) {
-        this.tripItemTime = tripItemTime;
-    }
-
-    public String getTripItemDescription() {
-        return tripItemDescription;
-    }
-
-    public void setTripItemDescription(String tripItemDescription) {
         this.tripItemDescription = tripItemDescription;
     }
 

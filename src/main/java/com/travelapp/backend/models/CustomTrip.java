@@ -12,6 +12,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
 @Entity(name = "CustomTrip") 
 @Table(name = "CustomTrip")
 public class CustomTrip {
@@ -65,66 +71,6 @@ public class CustomTrip {
         this.tripName = tripName;
         this.tripCountry = tripCountry;
         this.tripDuration = tripDuration;
-        this.customTripCode = tripCode;
-    }
-
-
-
-    public Integer getTripId() {
-        return tripId;
-    }
-
-
-
-    public void setTripId(Integer tripId) {
-        this.tripId = tripId;
-    }
-
-
-
-    public String getTripName() {
-        return tripName;
-    }
-
-
-
-    public void setTripName(String tripName) {
-        this.tripName = tripName;
-    }
-
-
-
-    public String getTripCountry() {
-        return tripCountry;
-    }
-
-
-
-    public void setTripCountry(String tripCountry) {
-        this.tripCountry = tripCountry;
-    }
-
-
-
-    public Integer getTripDuration() {
-        return tripDuration;
-    }
-
-
-
-    public void setTripDuration(Integer tripDuration) {
-        this.tripDuration = tripDuration;
-    }
-
-
-
-    public String getTripCode() {
-        return customTripCode;
-    }
-
-
-
-    public void setTripCode(String tripCode) {
         this.customTripCode = tripCode;
     }
 
