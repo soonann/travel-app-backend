@@ -72,35 +72,7 @@ public class CustomTrip {
         this.tripCountry = tripCountry;
         this.tripDuration = tripDuration;
         this.customTripCode = tripCode;
-    }
-
-
-
-    public User getUser() {
-        return user;
-    }
-
-
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-
-
-    public List<CustomTripItem> getCustomTripItems() {
-        return customTripItems;
-    }
-
-
-
-    public void setCustomTripItems(List<CustomTripItem> customTripItems) {
-        this.customTripItems = customTripItems;
-    }
-
-
-    
-    
+    } 
 
     
     

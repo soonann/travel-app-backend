@@ -59,18 +59,6 @@ public class PremadeTrip {
         this.tripCountry = tripCountry;
         this.tripDuration = tripDuration;
     }
-
-
-
-    public List<PremadeTripItem> getPremadeTripItems() {
-        return tripItemsList;
-    }
-
-
-
-    public void setPremadeTripItems(List<PremadeTripItem> tripItemsList) {
-        this.tripItemsList = tripItemsList;
-    }
     
     
     

@@ -65,15 +65,6 @@ public class PremadeTripItem {
         this.tripItemTime = tripItemTime;
         this.tripItemDescription = tripItemDescription;
     }
-
-    public PremadeTrip getPremadeTrip() {
-        return premadeTrip;
-    }
-
-    public void setPremadeTrip(PremadeTrip premadeTrip) {
-        this.premadeTrip = premadeTrip;
-    }
-
     
     
     
