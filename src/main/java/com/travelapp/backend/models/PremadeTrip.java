@@ -59,8 +59,65 @@ public class PremadeTrip {
         this.tripCountry = tripCountry;
         this.tripDuration = tripDuration;
     }
+
+
+    public String getTripCode() {
+        return tripCode;
+    }
+
+
+    public void setTripCode(String tripCode) {
+        this.tripCode = tripCode;
+    }
+
+
+    public String getTripName() {
+        return tripName;
+    }
+
+
+    public void setTripName(String tripName) {
+        this.tripName = tripName;
+    }
+
+
+    public String getTripCountry() {
+        return tripCountry;
+    }
+
+
+    public void setTripCountry(String tripCountry) {
+        this.tripCountry = tripCountry;
+    }
+
+
+    public Integer getTripDuration() {
+        return tripDuration;
+    }
+
+
+    public void setTripDuration(Integer tripDuration) {
+        this.tripDuration = tripDuration;
+    }
+
+
+    public List<PremadeTripItem> getTripItemsList() {
+        return tripItemsList;
+    }
+
+
+    public void setTripItemsList(List<PremadeTripItem> tripItemsList) {
+        this.tripItemsList = tripItemsList;
+    }
+
+
+    public List<PremadeTripItem> getPremadeTripItems() {
+        return tripItemsList;
+    }
     
-    
+    public void setPremadeTripItems(List<PremadeTripItem> tripItemsList){
+        this.tripItemsList = tripItemsList;
+    }
     
     
 }

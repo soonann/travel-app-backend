@@ -1,5 +1,6 @@
 package com.travelapp.backend.models;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
@@ -50,6 +51,11 @@ public class CustomTripItem {
     )
     private String tripItemDescription;
 
+    @Column(
+        name = "trip_item_price",
+        nullable = false
+    )
+    private BigDecimal tripItemPrice;
 
     // Relations
     @JsonIgnore
@@ -69,10 +75,11 @@ public class CustomTripItem {
       
     }
 
-    public CustomTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription) {
+    public CustomTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription, BigDecimal tripItemPrice) {
         this.tripItemDays = tripItemDays;
         this.tripItemTime = tripItemTime;
         this.tripItemDescription = tripItemDescription;
+        this.tripItemPrice = tripItemPrice;
     }
 
     public Integer getTripItemId() {
@@ -115,7 +122,13 @@ public class CustomTripItem {
         this.customTrip = customTrip;
     }
 
-    
+    public BigDecimal getTripItemPrice(){
+        return tripItemPrice;
+    }
+
+    public void setTripItemPrice(BigDecimal tripItemPrice){
+        this.tripItemPrice = tripItemPrice;
+    }
 
     
 }

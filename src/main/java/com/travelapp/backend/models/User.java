@@ -11,11 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity(name = "TUser")
 @Table(
     name = "TUser",
@@ -85,5 +81,90 @@ public class User {
         this.userMobile = userMobile;
     }
 
+
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+
+
+    public String getUserFirstName() {
+        return userFirstName;
+    }
+
+
+
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
+    }
+
+
+
+    public String getUserLastName() {
+        return userLastName;
+    }
+
+
+
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
+
+
+
+    public LocalDate getUserDob() {
+        return userDob;
+    }
+
+
+
+    public void setUserDob(LocalDate userDob) {
+        this.userDob = userDob;
+    }
+
+
+
+    public String getUserMobile() {
+        return userMobile;
+    }
+
+
+
+    public void setUserMobile(String userMobile) {
+        this.userMobile = userMobile;
+    }
+
+
+
+    public List<CustomTrip> getCustomTripList() {
+        return customTripList;
+    }
+
+
+
+    public void setCustomTripList(List<CustomTrip> customTripList) {
+        this.customTripList = customTripList;
+    }
+
+    
     
 }
