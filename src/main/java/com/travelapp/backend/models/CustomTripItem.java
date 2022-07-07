@@ -1,6 +1,5 @@
 package com.travelapp.backend.models;
 
-import java.math.BigDecimal;
 import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
@@ -51,11 +50,6 @@ public class CustomTripItem {
     )
     private String tripItemDescription;
 
-    @Column(
-        name = "trip_item_price",
-        nullable = false
-    )
-    private BigDecimal tripItemPrice;
 
     // Relations
     @JsonIgnore
@@ -75,12 +69,53 @@ public class CustomTripItem {
       
     }
 
-    public CustomTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription, BigDecimal tripItemPrice) {
+    public CustomTripItem(Integer tripItemDays, LocalTime tripItemTime, String tripItemDescription) {
         this.tripItemDays = tripItemDays;
         this.tripItemTime = tripItemTime;
         this.tripItemDescription = tripItemDescription;
-        this.tripItemPrice = tripItemPrice;
-    }   
+    }
+
+    public Integer getTripItemId() {
+        return tripItemId;
+    }
+
+    public void setTripItemId(Integer tripItemId) {
+        this.tripItemId = tripItemId;
+    }
+
+    public String getTripItemDescription() {
+        return tripItemDescription;
+    }
+
+    public void setTripItemDescription(String tripItemDescription) {
+        this.tripItemDescription = tripItemDescription;
+    }
+
+    public Integer getTripItemDays() {
+        return tripItemDays;
+    }
+
+    public void setTripItemDays(Integer tripItemDays) {
+        this.tripItemDays = tripItemDays;
+    }
+
+    public LocalTime getTripItemTime() {
+        return tripItemTime;
+    }
+
+    public void setTripItemTime(LocalTime tripItemTime) {
+        this.tripItemTime = tripItemTime;
+    }
+
+    public CustomTrip getCustomTrip() {
+        return customTrip;
+    }
+
+    public void setCustomTrip(CustomTrip customTrip) {
+        this.customTrip = customTrip;
+    }
+
+    
 
     
 }
