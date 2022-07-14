@@ -1,16 +1,17 @@
 package com.travelapp.backend.config;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
+@EnableWebSecurity // Enable Spring Security’s web 
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        
+
         http.cors().and().csrf().disable()
             .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
                     .anyRequest().authenticated())
