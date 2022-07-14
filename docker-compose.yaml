@@ -3,7 +3,7 @@ services:
   travelapp-backend:
     # Building
     container_name: heap-travel-app
-    image: heap-travel-app
+    image: soonann/heap-travel-app:latest
     build: .
     
     # Volumes
