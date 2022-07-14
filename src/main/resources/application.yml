@@ -1,5 +1,8 @@
 name: testing
 spring:
+  mvc:
+      pathmatch:
+        matching-strategy: ant_path_matcher
   jpa:
     show-sql: true
     properties:
@@ -24,4 +27,3 @@ server:
   port: 8080
   error:
     include-message: always
-
