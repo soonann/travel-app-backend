@@ -11,11 +11,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // http.authorizeRequests().antMatchers("/*","swagger-ui.html").permitAll();
+        http.authorizeRequests()
+        .antMatchers("/", "/v2/api-docs", "/swagger-resources/**", "/webjars/**", "/swagger-ui.html").permitAll();
 
         http.cors().and().csrf().disable()
-            .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
-                    .anyRequest().authenticated())
-            .oauth2ResourceServer().jwt();
+            .authorizeRequests(
+                    expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
+                    .anyRequest()
+                    .authenticated()
+            ).oauth2ResourceServer()
+            .jwt();
         return http.build();
     }
 }

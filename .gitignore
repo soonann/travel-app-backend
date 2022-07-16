@@ -31,6 +31,8 @@ build/
 
 ## Custom Environments 
 *.env
+.vscode
+
 
 # Temporary
 docker
