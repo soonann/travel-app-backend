@@ -1,5 +1,12 @@
+# workspace
+.vscode/
+env
+
+# build
 target/
-.vscode
 
-
+# docker files
+Dockerfile
+docker-compose.yaml
+docker-compose.env
 
