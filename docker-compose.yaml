@@ -1,10 +1,11 @@
+version: '3.0'
 services:
   travelapp-backend:
     # Building
     container_name: heap-travel-app
     image: heap-travel-app
     build: .
-    
+
     # Volumes
     volumes:
       - .:/opt/app
@@ -12,6 +13,5 @@ services:
     # Running
     ports: 
       - "8080:8080"
-    env_file:
-      - docker-compose.env
 
+    env_file: ./docker-compose.env
