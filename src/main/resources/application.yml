@@ -9,6 +9,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
         format_sql: true
+    generate-ddl: true
     hibernate:
       ddl-auto: create-drop
       naming:
