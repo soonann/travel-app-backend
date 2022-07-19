@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "premade_trip_item")
-@Table(name = "premade_trip_item")
+@Table(name = "premade_trip_item", schema = "public")
 public class PremadeTripItem {
     
     @Id

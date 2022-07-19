@@ -20,7 +20,8 @@ import javax.persistence.UniqueConstraint;
             name = "user_email_unique",
             columnNames = "user_email"
         )
-    }
+    }, 
+    schema = "public"
 
 )
 public class User {

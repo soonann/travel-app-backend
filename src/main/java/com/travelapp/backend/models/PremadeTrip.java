@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity(name = "premade_trip")
-@Table(name = "premade_trip")
+@Table(name = "premade_trip", schema = "public")
 public class PremadeTrip {
 
     @Id

@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "custom_trip") 
-@Table(name = "custom_trip")
+@Table(name = "custom_trip", schema = "public")
 public class CustomTrip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
