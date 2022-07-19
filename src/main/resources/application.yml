@@ -10,7 +10,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
         format_sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST}:5432/${DATABASE_NAME}
