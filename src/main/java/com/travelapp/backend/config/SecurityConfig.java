@@ -20,13 +20,16 @@ public class SecurityConfig {
         http.authorizeRequests()
         .antMatchers("/", "/v2/api-docs", "/swagger-resources/**", "/webjars/**", "/swagger-ui.html").permitAll();
 
-        http.cors().and().csrf().disable()
+        http.csrf().disable()
             .authorizeRequests(
                     expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
                     .anyRequest()
                     .authenticated()
             ).oauth2ResourceServer()
             .jwt();
+            
+        http.cors();
+
         return http.build();
     }
     
