@@ -17,8 +17,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "CustomTrip") 
-@Table(name = "CustomTrip")
+@Entity(name = "custom_trip") 
+@Table(name = "custom_trip")
 public class CustomTrip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

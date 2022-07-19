@@ -20,8 +20,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "CustomTripItem")
-@Table(name = "CustomTripItem")
+@Entity(name = "custom_trip_item")
+@Table(name = "custom_trip_item")
 public class CustomTripItem {
 
     @Id

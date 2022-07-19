@@ -13,8 +13,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@Entity(name = "PremadeTrip")
-@Table(name = "PremadeTrip")
+@Entity(name = "premade_trip")
+@Table(name = "premade_trip")
 public class PremadeTrip {
 
     @Id

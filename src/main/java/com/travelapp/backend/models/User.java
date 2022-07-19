@@ -12,9 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 
-@Entity(name = "TUser")
+@Entity(name = "tuser")
 @Table(
-    name = "TUser",
+    name = "tuser",
     uniqueConstraints = {
         @UniqueConstraint(
             name = "user_email_unique",
