@@ -17,7 +17,7 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST}:5432/${DATABASE_NAME}
+    url: jdbc:postgresql://${DATABASE_HOST}:5432/${DATABASE_NAME}?currentSchema=public
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
   
