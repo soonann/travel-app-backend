@@ -3,8 +3,6 @@ package com.travelapp.backend.services;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 import com.travelapp.backend.models.CustomTrip;
 import com.travelapp.backend.models.CustomTripItem;
 import com.travelapp.backend.repositories.CustomTripItemRepository;
