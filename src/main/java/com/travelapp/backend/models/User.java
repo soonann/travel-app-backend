@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity(name = "tuser")
 @Table(
@@ -65,6 +67,7 @@ public class User {
     private String userMobile;
 
     // Relations
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<CustomTrip> customTripList;
 

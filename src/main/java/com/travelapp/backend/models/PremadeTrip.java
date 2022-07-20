@@ -8,11 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
 @Entity(name = "premade_trip")
 @Table(name = "premade_trip", schema = "public")
 public class PremadeTrip {
@@ -98,16 +93,6 @@ public class PremadeTrip {
 
     public void setTripDuration(Integer tripDuration) {
         this.tripDuration = tripDuration;
-    }
-
-
-    public List<PremadeTripItem> getTripItemsList() {
-        return tripItemsList;
-    }
-
-
-    public void setTripItemsList(List<PremadeTripItem> tripItemsList) {
-        this.tripItemsList = tripItemsList;
     }
 
 
