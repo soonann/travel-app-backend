@@ -1,5 +1,5 @@
 # Travel App Backend
-## A Dockerised API Server built in Spring Boot MVC and AWS Cognito API
+A Dockerised Spring Boot MVC API Server with AWS Cognito API
 
 
 ## Introduction
