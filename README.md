@@ -2,7 +2,7 @@
 ## A Dockerised API Server built in Spring Boot MVC and AWS Cognito API
 
 
-## Introduction
+## Overview
 This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the technologies/frameworks used in this project are: 
 * Spring Boot MVC
 * Postgresql
@@ -16,60 +16,58 @@ This application is a backend service built for the <a href="https://github.com/
 <img src="" />
 
 #### Database Entity Relation Diagram
-<img src="" />
+<img src="https://cloud.potatovault.com/s/travel-app-erd/preview" />
 
 
 ## Installation
 
-To install and run this project, you will need the following tools:
-1. <a href="https://code.visualstudio.com/">VSCode</a>
-2. VSCode Extensions:
-  a. <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>
-  b. <a href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java(TM) by Red Hat</a>
-3. <a href="https://www.oracle.com/java/technologies/downloads/#java17">Java 17</a> 
+Take note that this is an installation of the local version of the project, where the database resides locally in the machine as a docker container.
 
-After you have installed all of them, open up your command line of choice and type in the following commands to check if they have been installed properly.
+Furthermore, the main branch does not have the AWS Cognito API implemented, this is to facilitate faster testing of the endpoints locally.
 
-```bash
-$ java --version
-openjdk 17.0.3 2022-04-19
+To see a version with the AWS Cognito API implemented, you can refer to the `production` branch. 
 
-# optional as VSCode might not necessarily need to be added to PATH
-$ code --version 
-1.68.1
-```
-
-You will also have to clone the source code from this repository if you have not done so already
-```bash
-# alternatively, you can also download the project as a zip file
-$ git clone https://github.com/soonann/travel-app-backend.git
-```
-
-
-
-
-
-
-## Starting the Server
-
-```
-
-```
-
-
-## Installation w/ Docker (Optional)
-The project has also been dockerise, this means you can either pull the image from our repository or build it from the docker compose file's specifications.
-
-To be able to run this project with docker, you need to install docker:
+#### Prerequisites
+To be able to run this project, you will need to install:
 - <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>
 
-Open up your command line of choice and type in the follow commands to check if docker has been installed properly:
+
+After installing, open up your command line of choice and type in the follow commands to check if docker has been installed properly:
 
 ```bash
 $ docker --version 
 Docker version 20.10.16
 ```
+#### Configuration files
+Before you are able to start the project, you will need to rename the `docker-compose-local-sample.env` file to `docker-compose-local.env` and fill up the variables.
 
+Take note that the environment file's values will determine the naming of the database and connection credentials.
+
+
+```bash
+# docker-compose-local.env
+DATABASE_HOST=heap-travel-app-db
+DATABASE_SCHEMA=public
+DATABASE_PORT=5432
+POSTGRES_DB=travel-app-db
+POSTGRES_USER=travel-app-user
+POSTGRES_PASSWORD=travel-app-password
+```
+
+#### Starting/Stopping the Server
+To start the project:
+```bash
+# change working directory to project folder
+$ cd travel-app-backend
+# start project with docker compose
+$ docker compose up
+```
+
+To stop the project:
+```bash
+# <ctrl + c> to exit the terminal output 
+$ docker compose down 
+```
 
 ## Troubleshooting
 
@@ -89,4 +87,4 @@ bash: <command>:command not found
 ## Coffee > Food ☕
 If this project has helped you in anyway, feel free to buy me a coffee!
 
-<a href='https://ko-fi.com/soonann' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Kopi O at ko-fi.com' />
+<a href='https://ko-fi.com/soonann' target='_blank'><img height='40' style='border:0px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Kopi O at ko-fi.com' />
