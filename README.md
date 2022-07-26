@@ -12,10 +12,10 @@ This application is a backend service built for the <a href="https://github.com/
 
 ## System Design
 
-#### Solution Architecture
+### Solution Architecture
 <img src="" />
 
-#### Database Entity Relation Diagram
+### Database Entity Relation Diagram
 <img src="https://cloud.potatovault.com/s/travel-app-erd/preview" />
 
 
@@ -27,7 +27,7 @@ Furthermore, the main branch does not have the AWS Cognito API implemented, this
 
 To see a version with the AWS Cognito API implemented, you can refer to the `production` branch. 
 
-#### Prerequisites
+### Prerequisites
 To be able to run this project, you will need to install:
 - <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>
 
@@ -38,7 +38,7 @@ After installing, open up your command line of choice and type in the follow com
 $ docker --version 
 Docker version 20.10.16
 ```
-#### Configuration files
+### Configuration files
 Before you are able to start the project, you will need to rename the `docker-compose-local-sample.env` file to `docker-compose-local.env` and fill up the variables.
 
 Take note that the environment file's values will determine the naming of the database and connection credentials.
@@ -54,7 +54,7 @@ POSTGRES_USER=travel-app-user
 POSTGRES_PASSWORD=travel-app-password
 ```
 
-#### Starting/Stopping the Server
+### Managing the Server
 To start the project:
 ```bash
 # change working directory to project folder
