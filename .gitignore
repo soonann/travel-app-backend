@@ -30,7 +30,7 @@ build/
 !**/src/test/**/build/
 
 ## Custom Environments 
-docker-compose-local.env
+main.env
 .vscode
 
 

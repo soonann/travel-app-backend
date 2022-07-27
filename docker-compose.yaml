@@ -1,21 +1,21 @@
 version: '3.0'
 services:
-  travelapp-db:
+  travel-app-db:
   
-    container_name: heap-travel-app-db
+    container_name: travel-app-db
     image: postgres 
     env_file:
-      - ./docker-compose-local.env
+      - ./main.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
       - 5432:5432
-  travelapp-backend:
+  travel-app-backend:
  
-    container_name: heap-travel-app
-    image: soonann/heap-travel-app:latest
+    container_name: travel-app-backend
+    image: soonann/travel-app-backend:latest
     build: .
-    env_file: ./docker-compose-production.env
+    env_file: ./main.env
     restart: always
     depends_on:
       - db

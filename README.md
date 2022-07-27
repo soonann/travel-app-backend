@@ -3,7 +3,7 @@ A Dockerised Spring Boot MVC API Server with AWS Cognito API
 
 
 ## Overview
-This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the technologies/frameworks used in this project are: 
+This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the frameworks/dependencies in this project are: 
 * Spring Boot MVC
 * Postgresql
 * AWS Cognito API
@@ -14,18 +14,18 @@ This application is a backend service built for the <a href="https://github.com/
 ## System Design
 
 ### Solution Architecture
-<img src="" />
+<img src="" alt="Work-In-Progress" />
 
 ### Database Entity Relation Diagram
 <img src="https://cloud.potatovault.com/s/travel-app-erd/preview" />
 
 
 ## Installation
-Take note that the <a href="https://github.com/soonann/travel-app-backend">main</a> branch is an installation of the local version of the project, where the database resides locally in your development environment as a docker container.
+Take note that the <a href="https://github.com/soonann/travel-app-backend">main</a> branch is a local version of the project, where the database resides locally in your docker as a container.
 
-Furthermore, the main branch does not have the AWS Cognito API implemented, this is to facilitate faster testing of the endpoints locally.
+Furthermore, the <a href="https://github.com/soonann/travel-app-backend">main</a> branch does not have the AWS Cognito API implemented, this is to facilitate faster testing of the endpoints locally.
 
-To see a version with the AWS Cognito API implemented, you can refer to the <a href="https://github.com/soonann/travel-app-backend/tree/production">production</a> branch. 
+To see a version with the AWS Cognito API implemented, you can refer to the <a href="https://github.com/soonann/travel-app-backend/tree/production">production</a> branch. The <a href="https://github.com/soonann/travel-app-backend/tree/production">production</a> version has CI/CD configured to deploy on AWS ECS to the endpoint <a href="https://travel.potatovault.com">https://travel.potatovault.com</a>
 
 ### Prerequisites
 To be able to run this project, you will need to install:
@@ -39,26 +39,28 @@ Docker version 20.10.16
 ```
 If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section
 ### Configurations
-Before you are able to start the project, you will need to rename the `docker-compose-local-example.env` file to `docker-compose-local.env` and fill up the variables.
+Before you are able to start the project, you will need to rename the `example-main.env` file to `main.env` and fill up the variables.
 
 Take note that the environment file's values will determine the naming of the database and connection credentials.
 
 
 ```bash
-# docker-compose-local.env
-DATABASE_HOST=heap-travel-app-db
+# main.env
+DATABASE_HOST=travel-app-db
 DATABASE_SCHEMA=public
 DATABASE_PORT=5432
-POSTGRES_DB=travel-app-db
+POSTGRES_DB=travel-app
 POSTGRES_USER=travel-app-user
 POSTGRES_PASSWORD=travel-app-password
 ```
 
 ## Usage
+
+This section covers how to use the project with `docker compose`. 
+
+### Docker Compose
 To start the project:
 ```bash
-# change working directory to project folder
-$ cd travel-app-backend
 # start project with docker compose
 $ docker compose up
 ```
@@ -66,12 +68,17 @@ $ docker compose up
 To stop the project:
 ```bash
 # <Ctrl + C> to exit the running project
-$ docker compose down 
+$ docker compose down
 ```
+
+### Docker (Optional)
+Alternatively, you may use `docker` to start the project.
+
+The image is available on Docker Hub <a href="https://hub.docker.com/repository/docker/soonann/travel-app-backend">here</a>
 
 ## Troubleshooting
 
-If you get one of the following errors (depening on your terminal) while running any of the commands, you might need to add one or more of the tools installed above to PATH: 
+If you get one of the following errors (depending on your terminal) while running any of the commands, you might need to add one or more of the dependencies installed above to PATH: 
 
 ```bash
 # cmd - windows
