@@ -37,7 +37,7 @@ After installing, open up your command line of choice and type in the follow com
 $ docker --version 
 Docker version 20.10.16
 ```
-If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section
+If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section.
 ### Configurations
 Before you are able to start the project, you will need to rename the `example-main.env` file to `main.env` and fill up the variables.
 
@@ -56,7 +56,7 @@ POSTGRES_PASSWORD=travel-app-password
 
 ## Usage
 
-This section covers how to use the project with `docker compose`. 
+This section covers how to use the project with `docker compose`
 
 ### Docker Compose
 To start the project:
