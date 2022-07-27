@@ -10,6 +10,7 @@ This application is a backend service built for the <a href="https://github.com/
 * Docker
 * Docker Compose 
 
+
 ## System Design
 
 ### Solution Architecture
@@ -25,7 +26,7 @@ Take note that this is an installation of the local version of the project, wher
 
 Furthermore, the main branch does not have the AWS Cognito API implemented, this is to facilitate faster testing of the endpoints locally.
 
-To see a version with the AWS Cognito API implemented, you can refer to the `production` branch. 
+To see a version with the AWS Cognito API implemented, you can refer to the <a href="https://github.com/soonann/travel-app-backend/tree/production">production</a> branch. 
 
 ### Prerequisites
 To be able to run this project, you will need to install:
@@ -33,12 +34,12 @@ To be able to run this project, you will need to install:
 
 
 After installing, open up your command line of choice and type in the follow commands to check if docker has been installed properly:
-
 ```bash
 $ docker --version 
 Docker version 20.10.16
 ```
-### Configuration files
+If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section
+### Configurations
 Before you are able to start the project, you will need to rename the `docker-compose-local-sample.env` file to `docker-compose-local.env` and fill up the variables.
 
 Take note that the environment file's values will determine the naming of the database and connection credentials.
@@ -54,7 +55,7 @@ POSTGRES_USER=travel-app-user
 POSTGRES_PASSWORD=travel-app-password
 ```
 
-### Managing the Server
+## Usage
 To start the project:
 ```bash
 # change working directory to project folder
@@ -65,7 +66,7 @@ $ docker compose up
 
 To stop the project:
 ```bash
-# <ctrl + c> to exit the terminal output 
+# <Ctrl + C> to exit the running project
 $ docker compose down 
 ```
 
@@ -83,6 +84,27 @@ zsh: command not found: <command>
 # bash - linux
 bash: <command>:command not found
 ```
+
+## Roadmap
+
+- [x] Implement Data JPA Models
+- [x] Create Controller, Service & Repository Layers
+- [ ] Implement robust validation
+- [x] Integration with AWS RDS
+- [x] Integration with AWS Cognito API
+- [x] Dockerise the Application
+- [x] Deployment to AWS ECS
+- [x] Configuration of GH Actions for CI/CD to AWS ECS
+
+
+Further development for this project has stopped as it has outran its purpose. Feel free to clone/fork the project and build ontop of it as your own.
+
+## Contributors
+* <a href='https://github.com/soonann'>Soon Ann</a>
+* <a href='https://github.com/yaolongt'>Yao Long</a>
+
+## Contact 
+If you encounter any issues, feel free to raise an <a href="https://github.com/soonann/travel-app-backend/issues">issue</a> or email me at <a href="mailto:soonann.dev@gmail.com">soonann.dev@gmail.com</a>
 
 ## Coffee > Food ☕
 If this project has helped you in anyway, feel free to buy me a coffee!
