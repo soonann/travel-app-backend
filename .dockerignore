@@ -8,5 +8,5 @@ target/
 # docker files
 Dockerfile
 docker-compose.yaml
-docker-compose.env
+*.env
 
