@@ -21,8 +21,7 @@ This application is a backend service built for the <a href="https://github.com/
 
 
 ## Installation
-
-Take note that this is an installation of the local version of the project, where the database resides locally in the machine as a docker container.
+Take note that the <a href="https://github.com/soonann/travel-app-backend">main</a> branch is an installation of the local version of the project, where the database resides locally in your development environment as a docker container.
 
 Furthermore, the main branch does not have the AWS Cognito API implemented, this is to facilitate faster testing of the endpoints locally.
 
@@ -40,7 +39,7 @@ Docker version 20.10.16
 ```
 If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section
 ### Configurations
-Before you are able to start the project, you will need to rename the `docker-compose-local-sample.env` file to `docker-compose-local.env` and fill up the variables.
+Before you are able to start the project, you will need to rename the `docker-compose-local-example.env` file to `docker-compose-local.env` and fill up the variables.
 
 Take note that the environment file's values will determine the naming of the database and connection credentials.
 
