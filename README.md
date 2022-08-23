@@ -2,10 +2,12 @@
 A Dockerised Spring Boot MVC API Server with AWS Cognito API
 
 ## Overview
-This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the frameworks/dependencies in this project are: 
+This application is a backend service, some of the frameworks/dependencies in this project are: 
 * Spring Boot MVC
 * Postgresql
 * AWS Cognito API
+* AWS ECS
+* AWS RDS
 * Docker
 * Docker Compose 
 
