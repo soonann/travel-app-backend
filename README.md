@@ -4,12 +4,12 @@ A Dockerised Spring Boot MVC API Server with AWS Cognito API
 ## Overview
 This application is a backend service, some of the frameworks/dependencies in this project are: 
 * Spring Boot MVC
-* Postgresql
-* AWS Cognito API
-* AWS ECS
-* AWS RDS
+* PostgreSQL
 * Docker
-* Docker Compose 
+* Docker Compose
+* AWS Cognito API (production)
+* AWS ECS (production)
+* AWS RDS (production)
 
 ## Contributors
 * <a href='https://github.com/soonann'>Soon Ann</a>
