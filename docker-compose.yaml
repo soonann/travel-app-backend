@@ -5,7 +5,7 @@ services:
     container_name: travel-app-db
     image: postgres 
     env_file:
-      - ./main.env
+      - ./example-main.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
@@ -15,10 +15,10 @@ services:
     container_name: travel-app-backend
     image: soonann/travel-app-backend:latest
     build: .
-    env_file: ./main.env
+    env_file: ./example-main.env
     restart: always
     depends_on:
-      - db
+      - travel-app-db
     volumes:
       - .:/opt/app
     ports: 

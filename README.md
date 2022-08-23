@@ -1,6 +1,9 @@
 # Travel App Backend
 A Dockerised Spring Boot MVC API Server with AWS Cognito API
 
+## Contributors
+* <a href='https://github.com/soonann'>Soon Ann</a>
+* <a href='https://github.com/yaolongt'>Yao Long</a>
 
 ## Overview
 This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the frameworks/dependencies in this project are: 
@@ -105,9 +108,6 @@ bash: <command>:command not found
 
 Further development for this project has stopped as it has outran its purpose. Feel free to clone/fork the project and build ontop of it as your own.
 
-## Contributors
-* <a href='https://github.com/soonann'>Soon Ann</a>
-* <a href='https://github.com/yaolongt'>Yao Long</a>
 
 ## Contact 
 If you encounter any issues, feel free to raise an <a href="https://github.com/soonann/travel-app-backend/issues">issue</a> or email me at <a href="mailto:soonann.dev@gmail.com">soonann.dev@gmail.com</a>
