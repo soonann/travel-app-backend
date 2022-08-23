@@ -1,10 +1,6 @@
 # Travel App Backend
 A Dockerised Spring Boot MVC API Server with AWS Cognito API
 
-## Contributors
-* <a href='https://github.com/soonann'>Soon Ann</a>
-* <a href='https://github.com/yaolongt'>Yao Long</a>
-
 ## Overview
 This application is a backend service built for the <a href="https://github.com/AustenLeow/travel-app">Travel App</a>, some of the frameworks/dependencies in this project are: 
 * Spring Boot MVC
@@ -13,6 +9,9 @@ This application is a backend service built for the <a href="https://github.com/
 * Docker
 * Docker Compose 
 
+## Contributors
+* <a href='https://github.com/soonann'>Soon Ann</a>
+* <a href='https://github.com/yaolongt'>Yao Long</a>
 
 ## System Design
 
