@@ -42,13 +42,12 @@ Docker version 20.10.16
 ```
 If you encounter any issues, you can refer to the <a href="#troubleshooting">Troubleshooting</a> Section.
 ### Configurations
-Before you are able to start the project, you will need to rename the `example-main.env` file to `main.env` and fill up the variables.
+If you wish to use the production version of this project, you will need to fill up the `example-production.env` file.
 
 Take note that the environment file's values will determine the naming of the database and connection credentials.
 
-
 ```bash
-# main.env
+# example-main.env
 DATABASE_HOST=travel-app-db
 DATABASE_SCHEMA=public
 DATABASE_PORT=5432
